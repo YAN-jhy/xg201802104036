@@ -7,12 +7,11 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-@WebFilter(filterName = "Filter1",urlPatterns = {"/*"})
+@WebFilter(filterName = "Filter10",urlPatterns = {"/*"})
 public class Filter10 implements Filter {
     private Set<String> toExclude = new HashSet<String>();
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        toExclude.add("/login");
     }
     @Override
     public void destroy() { }
