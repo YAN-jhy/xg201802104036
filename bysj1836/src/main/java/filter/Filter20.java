@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebFilter(filterName = "Filter2",urlPatterns = {"/*"})
+@WebFilter(filterName = "Filter20",urlPatterns = {"/*"})
 public class Filter20 implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException { }
