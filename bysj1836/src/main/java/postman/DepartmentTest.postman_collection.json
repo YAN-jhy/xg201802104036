@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "0c48dd0b-c8cd-4a5b-8e12-bb906500df0b",
+		"name": "DepartmentTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST localhost:8080/department.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40375937-82eb-49a5-948c-7df7b59abb8d",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"增加成功?\"] = jsonData.message === \"增加成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"id为null新系\",\"no\":\"0201\",\"remarks\":\"\",\"school\":{\r\n        \"description\": \"硕士\",\r\n        \"id\": 1,\r\n        \"no\": \"01\",\r\n        \"remarks\": \"\"\r\n\t\t\t    }}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/department.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"department.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/department.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0b0e3e4f-4c6e-4d51-828c-baa22ddedc8b",
+						"exec": [
+							"tests[\"Body matches string 信管\"]=responseBody.has(\"信管\");\r",
+							"tests[\"Body matches string 信息管理\"]=responseBody.has(\"信息管理\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/department.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"department.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/department.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6abad230-60e1-4355-b8cf-15234e9aca85",
+						"exec": [
+							"tests[\"Body matches string 信管\"]=responseBody.has(\"信管\");\r",
+							"tests[\"Body matches string 信息管理\"]=responseBody.has(\"信息管理\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/department.ctl?id=4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"department.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE localhost:8080/department.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "96023c63-2089-468b-95e6-dded06abf0a1",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"删除成功?\"] = jsonData.message === \"删除成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/department.ctl?id=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"department.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT localhost:8080/department.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "76b90b51-5dce-4f2a-a257-56d6ce5bf2f5",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"更新成功?\"] = jsonData.message === \"更新成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"description\":\"id为null新系\",\r\n\t\"no\":\"0201\",\r\n\t\"remarks\":\"\",\r\n\t\"school\":{\r\n        \"description\": \"硕士\",\r\n        \"id\": 1,\r\n        \"no\": \"01\",\r\n        \"remarks\": \"\"\r\n\t }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/department.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"department.ctl"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

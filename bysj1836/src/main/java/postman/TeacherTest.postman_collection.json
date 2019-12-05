@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "bd889a2d-ae59-43ad-9dae-2efaaf8ecc00",
+		"name": "TeacherTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40375937-82eb-49a5-948c-7df7b59abb8d",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"增加成功?\"] = jsonData.message === \"增加成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"description\": \"硕士\",\r\n        \"id\": 2,\r\n        \"no\": \"01\",\r\n        \"remarks\": \"\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/teacher.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccb9c167-9a7b-421b-b14d-96536f490c79",
+						"exec": [
+							"tests[\"Body matches string 苏通\"]=responseBody.has(\"苏通\");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/teacher.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/teacher.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "793d7820-ef02-4446-a18d-cc09e21fe3b7",
+						"exec": [
+							"tests[\"Body matches string 苏通\"]=responseBody.has(\"苏通\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"degree\": {\r\n            \"description\": \"管理\",\r\n            \"id\": 2,\r\n            \"no\": \"04\"\r\n        },\r\n        \"department\": {\r\n            \"description\": \"id为null新系\",\r\n            \"id\": 4,\r\n            \"no\": \"01\",\r\n            \"remarks\": \"\",\r\n            \"school\": {\r\n                \"description\": \"管理工程\",\r\n                \"id\": 1,\r\n                \"no\": \"01\",\r\n                \"remarks\": \"\"\r\n            }\r\n        },\r\n        \"id\": 2,\r\n        \"name\": \"苏通\",\r\n        \"title\": {\r\n            \"description\": \"id为null职称\",\r\n            \"id\": 1,\r\n            \"no\": \"0201\",\r\n            \"remarks\": \"rrr\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/teacher.ctl?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE localhost:8080/teacher.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c33bfbfd-bda5-4d46-af57-2c5903adfe85",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"删除成功?\"] = jsonData.message === \"删除成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/teacher.ctl?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT localhost:8080/teacher.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "574d35d1-9aa6-4dda-a636-08f4bc7158be",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"更新成功?\"] = jsonData.message === \"更新成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/teacher.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"teacher.ctl"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

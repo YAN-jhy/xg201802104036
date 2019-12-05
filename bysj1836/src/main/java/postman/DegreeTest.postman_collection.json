@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "94da2a43-313f-4313-9f9b-8518d2987cf7",
+		"name": "DegreeTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST localhost:8080/degree.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40375937-82eb-49a5-948c-7df7b59abb8d",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"增加成功?\"] = jsonData.message === \"增加成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"description\": \"博士\",\r\n        \"no\": \"01\",\r\n        \"remarks\": \"\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/degree.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"degree.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/degree.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7881c18-de27-483d-815b-d1bedfc7836f",
+						"exec": [
+							"tests[\"Body matches string 管理\"]=responseBody.has(\"管理\");\r",
+							"tests[\"Body matches string 博士\"]=responseBody.has(\"博士\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/degree.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"degree.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/degree.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d622d72e-4805-4061-b8a3-f46150e31d54",
+						"exec": [
+							"tests[\"Body matches string 管理\"]=responseBody.has(\"管理\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/degree.ctl?id=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"degree.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE localhost:8080/degree.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f30f8304-7b22-4644-a2f4-b4d2fdd6f783",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"删除成功?\"] = jsonData.message === \"删除成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/degree.ctl?id=4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"degree.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT localhost:8080/degree.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77b4d148-3065-4b04-a9e4-cc6f2ed9a7f4",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"更新成功?\"] = jsonData.message === \"更新成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\":\"硕士\",\"id\":4,\"no\":\"01\",\"remarks\":\"the best\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/degree.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"degree.ctl"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

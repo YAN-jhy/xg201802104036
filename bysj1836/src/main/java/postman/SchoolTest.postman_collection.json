@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "50280266-08dd-4fee-a615-0319a0c0d334",
+		"name": "SchoolTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST localhost:8080/school.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40375937-82eb-49a5-948c-7df7b59abb8d",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"增加成功?\"] = jsonData.message === \"增加成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"description\": \"硕士\",\r\n        \"id\": 2,\r\n        \"no\": \"01\",\r\n        \"remarks\": \"\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/school.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"school.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/school.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "081da162-456d-43b7-bf20-2a118c376e8e",
+						"exec": [
+							"tests[\"Body matches string 管理学院\"]=responseBody.has(\"管理学院\");\r",
+							"tests[\"Body matches string 管理工程\"]=responseBody.has(\"管理工程\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/school.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"school.ctl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET localhost:8080/school.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "163bcc24-e8e6-4c60-920e-35b643e12db9",
+						"exec": [
+							"tests[\"Body matches string 管理学院\"]=responseBody.has(\"管理学院\");\r",
+							"tests[\"Body matches string 管理工程\"]=responseBody.has(\"管理工程\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/school.ctl?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"school.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE localhost:8080/school.ctl?id=1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42b6a5e2-58ee-4a38-8a3a-194475cd040c",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"删除成功?\"] = jsonData.message === \"删除成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/school.ctl?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"school.ctl"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT localhost:8080/school.ctl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40bb240e-4b78-421c-a99b-44523a9ab86e",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"      tests[\"更新成功?\"] = jsonData.message === \"更新成功\""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"description\": \"硕士\",\r\n        \"id\": 2,\r\n        \"no\": \"222\",\r\n        \"remarks\": \"\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/school.ctl",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"school.ctl"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

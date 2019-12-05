@@ -1,0 +1,65 @@
+.\mysqld -install mysql55
+net start mysql55
+net stop mysql55                //停止服务
+.\mysqld -remove mysql55        //删除服务
+.\mysql -uroot -p
+drop database bysj;             //删除数据库
+create database bysj1836 default character set utf8 collate utf8_general_ci;   //创建数据库
+use bysj1836;
+show databases;
+create table degree(
+    id bigint not null auto_increment,
+    description varchar(225) not null,
+    no varchar(225) not null,
+    remarks varchar(225),
+    primary key(id)
+  );
+create table school(
+    id bigint not null auto_increment,
+    description varchar(225) not null,
+    no varchar(225) not null,
+    remarks varchar(225),
+    primary key(id)
+  );
+create table department(
+    id bigint not null auto_increment,
+    description varchar(225) not null,
+    no varchar(225) not null,
+    remarks varchar(225),
+    school_id bigint not null,
+    primary key(id,school_id),
+    foreign key(school_id) references school(id)
+   );
+create table profTitle(
+   id bigint not null auto_increment,
+   description varchar(225) not null,
+   no varchar(225) not null,
+   remarks varchar(225),
+   primary key(id)
+);
+create table user(
+   id bigint not null auto_increment,
+   username varchar(225) not null,
+   password varchar(225) not null,
+   loginTime datetime,
+   teacher_id bigint not null,
+   primary key(id,teacher_id),
+   foreign key(teacher_id) references teacher(id)
+);
+create table teacher(
+    id bigint not null auto_increment,
+    no varchar(225) not null,
+    name varchar(225) not null,
+    title_id bigint not null,
+    degree_id bigint not null,
+    department_id bigint not null,
+    primary key(id,title_id,degree_id,department_id),
+    foreign key(title_id) references profTitle(id),
+    foreign key(degree_id) references degree(id),
+    foreign key(department_id) references department(id)
+    );
+insert into degree(no,description) values("02","硕士");
+insert into teacher(no,name,degree_id,department_id,title_id) values("05","赵童",9,6,2);
+select * from degree where id='1';
+
+远程公网IP：49.234.227.112  用户名：Administrator  初始密码：L2FkERE5dZqDf
